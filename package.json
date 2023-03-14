@@ -1,0 +1,30 @@
+{
+  "name": "try-guard",
+  "version": "1.0.0",
+  "description": "Alternative Error handling in Javascript",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "test": "vitest",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephanmingoes/try-guard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stephanmingoes/try-guard/issues"
+  },
+  "homepage": "https://github.com/stephanmingoes/try-guard#readme",
+  "keywords": [
+    "try-catch",
+    "error",
+    "handling"
+  ],
+  "author": "Stephan Mingoes",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.9.5",
+    "vitest": "^0.29.2"
+  }
+}
