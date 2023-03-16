@@ -1,6 +1,6 @@
 {
   "name": "try-guard",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Alternative way to handle errors in Javascript",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
