@@ -1,13 +1,24 @@
-type TryGuardResult<T, E extends Error = Error> = [E | null, T | null];
-type Callback<T, A extends any[]> = (...args: A) => T;
-type CallbackPromise<T, A extends any[]> = (...args: A) => Promise<T>;
+type TryGuardResult<ReturnData, ErrorType extends Error = Error> = [
+  ErrorType | null,
+  ReturnData | null
+];
+type Callback<ReturnData, Arguments extends any[]> = (
+  ...args: Arguments
+) => ReturnData;
+type CallbackPromise<ReturnData, Arguments extends any[]> = (
+  ...args: Arguments
+) => Promise<ReturnData>;
 
-export function TryGuard<T, A extends any[] = any[], E extends Error = Error>(
-  callback: Callback<T, A>,
-  args: A
-): TryGuardResult<T, E> {
-  let data: T | null = null;
-  let err: E | null = null;
+export function TryGuard<
+  ReturnData,
+  Arguments extends any[],
+  ErrorType extends Error = Error
+>(
+  callback: Callback<ReturnData, Arguments>,
+  args: Arguments
+): TryGuardResult<ReturnData, ErrorType> {
+  let data: ReturnData | null = null;
+  let err: ErrorType | null = null;
   try {
     const res = callback(...args);
     data = res;
@@ -18,12 +29,15 @@ export function TryGuard<T, A extends any[] = any[], E extends Error = Error>(
 }
 
 export async function TryGuardAsync<
-  T,
-  A extends any[] = any[],
-  E extends Error = Error
->(callback: CallbackPromise<T, A>, args: A): Promise<TryGuardResult<T, E>> {
-  let data: T | null = null;
-  let err: E | null = null;
+  ReturnData,
+  Arguments extends any[],
+  ErrorType extends Error = Error
+>(
+  callback: CallbackPromise<ReturnData, Arguments>,
+  args: Arguments
+): Promise<TryGuardResult<ReturnData, ErrorType>> {
+  let data: ReturnData | null = null;
+  let err: ErrorType | null = null;
   try {
     const res = await callback(...args);
     data = res;
